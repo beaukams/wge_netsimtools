@@ -1,0 +1,8 @@
+SIMNETT: SIMulator NETwork Tool
+simnett est un outil réseau écrit en java destiné à émuler l'ensemble du réseau. Il permet entre 
+autre la création de paquets, la manipulation ainsi qu'un certain nombre de mécanismes de traitement 
+notamment le filtrage de paquets et l'encapsulation.
+Il permet aux étudiants de pouvoir avoir la compréhension réelle de ce qui se passe dans le réseau.
+Il vise aussi à offrir aux concepteurs un moyen simple de modéliser leur réseau, mieux, de concevoir
+leur propre modèle avec les protocoles ou leurs protocoles. Donc l'outil se veut de faciliter la 
+conception de protocole .
