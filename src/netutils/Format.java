@@ -128,8 +128,10 @@ public class Format {
 	 * @return convertit un nombre décimal en nombre hexadecimal et retourne le résultat sous forme de tableau de caractere
 	 */
 	public static char [] decToHex(int nb){
+		
 		int n = (int) (Math.log(nb)/Math.log(16));
-		if(((int)Math.pow(16,n))!=nb) n++;
+		if(nb==0) n=1;
+		if(Math.pow(16,n)<=nb && Math.pow(16, n+1)>nb) n++;
 		int tab [] = new int [n];
 		for(int i=0; i<n; i++){
 			tab[i] = nb%16;
@@ -374,10 +376,12 @@ public class Format {
 			//les parties sans les separateurs
 			String chSep [] = Format.decomposeChaine(ch, regex);;
 			
-			char bin [][] = new char [chSep.length][ch.length()];
+			char bin [][] = new char [chSep.length][chSep[0].length()];
+			
 			
 			for(int i=0; i<bin.length; i++){
 				bin[i] = Format.stringToHex(chSep[bin.length-i-1]);
+				
 			}
 			return bin;
 		}else{
@@ -477,6 +481,44 @@ public class Format {
 		return res;
 	}
 	
+	/**
+	 * @param 
+	 * @return la même chaine renversée
+	 */
+	public static String renverserChaine(String chaine){
+		String res = "";
+		for(int i=0; i<chaine.length(); i++) res += chaine.charAt(chaine.length()-i-1);
+		return res;
+	}
+	
+	/**
+	 * Renverser un tableau de type int
+	 * @param tab
+	 * @return renverser un tableau d'entier
+	 */
+	public static int [] renverserTableau(int tab []){
+		int res [] = new int [tab.length];
+		for(int i=0; i<res.length; i++) res[i] = tab[res.length-i-1];
+		return res;
+	}
+	
+	/**
+	 * Renverser un tableau de type char
+	 * @param tab
+	 * @return renverser un tableau de char
+	 */
+	public static char [] renverserTableau(char tab []){
+		char res [] = new char [tab.length];
+		for(int i=0; i<res.length; i++) res[i] = tab[res.length-i-1];
+		return res;
+	}
+	
+	public static char [][] renverserTableau(char tab [][]){
+		char res [][] = new char [tab.length][tab[0].length];
+		for(int i=0; i<res.length; i++) res[i] = tab[res.length-i-1];
+		return res;
+	}
+	
 	public static void main(String args []){
 		int n=295;
 		//System.out.println(Format.toString(Format.decToHex(n)));
@@ -490,7 +532,7 @@ public class Format {
 		System.out.println("chaine bin"+bi);
 		System.out.println("chaine en bin"+Format.toString(Format.stringToBin(bi)));
 		System.out.println("bin to dec"+Format.toString(Format.binToDec(Format.stringToBin(bi))));*/
-		System.out.println(Format.toString(Format.decToBin(4)));
-		
+		System.out.println(Format.toString(Format.decToHex(2555)));
+		System.out.println(Format.toString(Format.decToBin(2555, 8)));
 	}
 }
